@@ -6,7 +6,7 @@ class Account constructor(holder: String, number: Int) {
     private val number = number
     private var balance: Double = 0.0
 
-    fun deposite(value: Double): Boolean {
+    internal fun deposite(value: Double): Boolean {
         return when {
             isValuePositive(value) -> {
                 this.balance += value
@@ -16,7 +16,7 @@ class Account constructor(holder: String, number: Int) {
         }
     }
 
-    fun withdraw(value: Double): Boolean {
+    internal fun withdraw(value: Double): Boolean {
         return when {
             isValueValid(value) -> {
                 this.balance -= value
@@ -26,7 +26,7 @@ class Account constructor(holder: String, number: Int) {
         }
     }
 
-    fun transfer(value: Double, beneficiario: Account): Boolean {
+    internal fun transfer(value: Double, beneficiario: Account): Boolean {
         return when {
             isValueValid(value) -> {
                 this.withdraw(value)
