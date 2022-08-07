@@ -1,13 +1,17 @@
-fun main() {
-    verifica(0)
-    verifica(1)
-    verifica(2)
-}
+import main.kotlin.Conta
+import main.kotlin.ContaBuilder
 
-fun verifica(saldo: Int) {
-    when(saldo) {
-        1 -> println("Batata")
-        2 -> println("Arroz")
-        else -> println("Mandioca")
-    }
+fun main() {
+    val contaMarcelo = ContaBuilder.build("Marcelo");
+    val contaRenato = ContaBuilder.build("Renato")
+
+    contaMarcelo.depositar(500.0)
+    contaRenato.depositar(1000.0)
+
+    contaRenato.sacar(300.0)
+
+    contaRenato.transferir(100.0, contaMarcelo)
+
+    println(contaMarcelo.toString())
+    println(contaRenato.toString())
 }
