@@ -1,16 +1,19 @@
-import main.kotlin.AccountBuilder
+import account.AccountBuilder
+import operation.OperationManager
 
 fun main() {
     val contaMarcelo = AccountBuilder.build("Marcelo");
     val contaRenato = AccountBuilder.build("Renato")
 
-    contaMarcelo.deposite(500.0)
-    contaRenato.deposite(1000.0)
+    val operationManager = OperationManager
 
-    contaRenato.withdraw(300.0)
+    operationManager.deposite(contaMarcelo, 500.0)
+    operationManager.deposite(contaRenato, 1000.0)
 
-    contaRenato.transfer(100.0, contaMarcelo)
+    operationManager.withdraw(contaRenato, 300.0)
 
-    println(contaMarcelo.toString())
-    println(contaRenato.toString())
+    operationManager.transfer(contaRenato, contaMarcelo, 100.0)
+
+    println(contaMarcelo.getDetails())
+    println(contaRenato.getDetails())
 }
