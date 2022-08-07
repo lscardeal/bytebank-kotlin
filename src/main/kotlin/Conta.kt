@@ -15,13 +15,25 @@ class Conta constructor(titular: String, numero: Int) {
         this.saldo += valor
     }
 
-    fun sacar(valor: Double) {
-        this.saldo -= valor
+    fun sacar(valor: Double): Boolean {
+        return when {
+            valor <= this.saldo -> {
+                this.saldo -= valor
+                true
+            }
+            else -> false
+        }
     }
 
-    fun transferir(valor: Double, beneficiario: Conta) {
-        this.sacar(valor)
-        beneficiario.depositar(valor)
+    fun transferir(valor: Double, beneficiario: Conta): Boolean {
+        return when {
+            valor <= this.saldo -> {
+                this.sacar(valor)
+                beneficiario.depositar(valor)
+                true
+            }
+            else -> false
+        }
     }
 
     override fun toString(): String {
