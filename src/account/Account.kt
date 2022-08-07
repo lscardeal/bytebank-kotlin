@@ -1,9 +1,7 @@
 package account
 
-class Account constructor(holder: String, number: Int) {
+class Account constructor(val holder: String, val number: Int) {
 
-    val holder = holder
-    val number = number
     var balance: Double = 0.0
         private set
 
