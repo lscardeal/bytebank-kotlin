@@ -14,6 +14,6 @@ fun main() {
 
     operationManager.transfer(contaRenato, contaMarcelo, 100.0)
 
-    println(contaMarcelo.getDetails())
-    println(contaRenato.getDetails())
+    contaMarcelo.printDetails()
+    contaRenato.printDetails()
 }

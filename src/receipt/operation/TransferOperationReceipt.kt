@@ -13,8 +13,8 @@ class TransferOperationReceipt(override val operationalAccount: Account,
         println()
         println("RECEIPT ---")
         println("   Operation Type: $operationType")
-        println("   Operational Account: ${operationalAccount.getHolder()}/#${operationalAccount.getNumber()}")
-        println("   Counterpart Account: ${counterpartAccount.getHolder()}/#${counterpartAccount.getNumber()}")
+        println("   Operational Account: ${operationalAccount.holder}/#${operationalAccount.number}")
+        println("   Counterpart Account: ${counterpartAccount.holder}/#${counterpartAccount.number}")
         println("   Value: $value")
         println()
     }

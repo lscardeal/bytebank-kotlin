@@ -2,9 +2,10 @@ package account
 
 class Account constructor(holder: String, number: Int) {
 
-    private val holder = holder
-    private val number = number
-    private var balance: Double = 0.0
+    val holder = holder
+    val number = number
+    var balance: Double = 0.0
+        private set
 
     internal fun increment(value: Double) {
         this.balance += value
@@ -14,18 +15,18 @@ class Account constructor(holder: String, number: Int) {
         this.balance -= value
     }
 
-    fun getHolder(): String {
-        return this.holder
-    }
-
-    fun getNumber(): Int {
-        return this.number
-    }
-
-    fun getBalance(): Double {
-        return this.balance
-    }
-    fun getDetails(): String {
-        return "Holder: $holder | Number: $number | Balance: $balance"
+//    fun getHolder(): String {
+//        return this.holder
+//    }
+//
+//    fun getNumber(): Int {
+//        return this.number
+//    }
+//
+//    fun getBalance(): Double {
+//        return this.balance
+//    }
+    fun printDetails() {
+        println("Holder: $holder | Number: $number | Balance: $balance")
     }
 }
