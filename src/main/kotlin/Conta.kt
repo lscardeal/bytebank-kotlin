@@ -1,42 +1,66 @@
 package main.kotlin
 
-class Conta constructor(titular: String, numero: Int) {
+class Account constructor(holder: String, number: Int) {
 
-    private val titular = titular
-        get() = field
+    private val holder = holder
+    private val number = number
+    private var balance: Double = 0.0
 
-    private val numero = numero
-        get() = field
-
-    private var saldo: Double = 0.0
-        get() = field
-
-    fun depositar(valor: Double) {
-        this.saldo += valor
-    }
-
-    fun sacar(valor: Double): Boolean {
+    fun deposite(value: Double): Boolean {
         return when {
-            valor <= this.saldo -> {
-                this.saldo -= valor
+            isValuePositive(value) -> {
+                this.balance += value
                 true
             }
             else -> false
         }
     }
 
-    fun transferir(valor: Double, beneficiario: Conta): Boolean {
+    fun withdraw(value: Double): Boolean {
         return when {
-            valor <= this.saldo -> {
-                this.sacar(valor)
-                beneficiario.depositar(valor)
+            isValueValid(value) -> {
+                this.balance -= value
                 true
             }
             else -> false
         }
     }
 
+    fun transfer(value: Double, beneficiario: Account): Boolean {
+        return when {
+            isValueValid(value) -> {
+                this.withdraw(value)
+                beneficiario.deposite(value)
+                true
+            }
+            else -> false
+        }
+    }
+
+    private fun isValuePositive(value: Double): Boolean {
+        return value >= 0
+    }
+
+    private fun isValueWithinBalance(value: Double): Boolean {
+        return value <= this.balance
+    }
+
+    private fun isValueValid(value: Double): Boolean {
+        return isValuePositive(value) && isValueWithinBalance(value)
+    }
+
+    fun getHolder(): String {
+        return this.holder
+    }
+
+    fun getNumber(): Int {
+        return this.number
+    }
+
+    fun getBalance(): Double {
+        return this.balance
+    }
     override fun toString(): String {
-        return "Titular: $titular || Numero: $numero || Saldo: $saldo"
+        return "Holder: $holder || Number: $number || Balance: $balance"
     }
 }

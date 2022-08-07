@@ -1,11 +1,11 @@
 package main.kotlin
 
-object ContaBuilder {
+object AccountBuilder {
 
-    private var numeroConta: Int = 0
+    private var accountNumber: Int = 0
 
-    fun build(titular: String): Conta {
-        numeroConta++
-        return Conta(titular, numeroConta);
+    fun build(holder: String): Account {
+        accountNumber++
+        return Account(holder, accountNumber);
     }
 }

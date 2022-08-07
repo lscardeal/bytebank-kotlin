@@ -1,16 +1,15 @@
-import main.kotlin.Conta
-import main.kotlin.ContaBuilder
+import main.kotlin.AccountBuilder
 
 fun main() {
-    val contaMarcelo = ContaBuilder.build("Marcelo");
-    val contaRenato = ContaBuilder.build("Renato")
+    val contaMarcelo = AccountBuilder.build("Marcelo");
+    val contaRenato = AccountBuilder.build("Renato")
 
-    contaMarcelo.depositar(500.0)
-    contaRenato.depositar(1000.0)
+    contaMarcelo.deposite(500.0)
+    contaRenato.deposite(1000.0)
 
-    contaRenato.sacar(300.0)
+    contaRenato.withdraw(300.0)
 
-    contaRenato.transferir(100.0, contaMarcelo)
+    contaRenato.transfer(100.0, contaMarcelo)
 
     println(contaMarcelo.toString())
     println(contaRenato.toString())
